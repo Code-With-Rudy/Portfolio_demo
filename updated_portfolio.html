@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rudranil Goswami - Software Developer & Python Enthusiast</title>
+    <meta name="description" content="Portfolio of Rudranil Goswami - Software Developer, Python Expert, AI/ML Enthusiast">
+    <meta property="og:title" content="Rudranil Goswami - Software Developer">
+    <meta property="og:description" content="HackerRank Global Rank 1 in Python | B.Tech ECE | B.Sc Data Science">
+    <meta property="og:type" content="website">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00FFAA;
+            --primary-dark: #00CC88;
+            --bg-light: #ffffff;
+            --bg-dark: #0a0a0a;
+            --text-light: #333333;
+            --text-dark: #ffffff;
+            --card-light: #f8f9fa;
+            --card-dark: #1a1a1a;
+            --border-light: #e0e0e0;
+            --border-dark: #333333;
+            --shadow-light: rgba(0,0,0,0.1);
+            --shadow-dark: rgba(0,255,170,0.1);
+            --card: #111111;    
+        }
+
+        [data-theme="light"] {
+            --bg: var(--bg-light);
+            --text: var(--text-light);
+            --card: var(--card-light);
+            --border: var(--border-light);
+            --shadow: var(--shadow-light);
+        }
+
+        [data-theme="dark"] {
+            --bg: var(--bg-dark);
+            --text: var(--text-dark);
+            --card: var(--card-dark);
+            --border: var(--border-dark);
+            --shadow: var(--shadow-dark);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        [data-theme="light"] header {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--border);
+            color: var(--text);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            z-index: 999;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-nav li {
+            padding: 0.5rem 20px;
+        }
+
+        .mobile-nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--primary);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--card) 100%);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            text-align: left;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 0 0 300px;
+        }
+
+/* Animation for pulsing border */
+@keyframes pulseBorder {
+    0% {
+        box-shadow: 0 0 0 0 var(--primary);
+    }
+    70% {
+        box-shadow: 0 0 0 12px transparent;
+    }
+    100% {
+        box-shadow: 0 0 0 0 transparent;
+    }
+}
+
+        .profile-image {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card);
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            overflow: hidden;
+
+            animation: pulseBorder 2.5s infinite ease-in-out;
+            transition: box-shadow 0.5s ease-in-out;
+
+        }
+
+
+        .profile-image:hover {
+            box-shadow: 0 0 30px var(--primary), 0 0 60px var(--primary);
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .typing-animation {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            min-height: 60px;
+            color: var(--primary);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--bg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .tech-category {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .tech-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: var(--primary);
+            color: var(--bg);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .project-description {
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--primary-dark);
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .certificate-card {
+            background: var(--card);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .certificate-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: var(--card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .certificate-content {
+            padding: 1.5rem;
+        }
+
+        .certificate-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .certificate-issuer {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-date {
+            color: var(--text);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: 5% auto;
+            display: block;
+            width: 80%;
+            max-width: 800px;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--primary);
+        }
+
+        .education-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+        }
+
+        .education-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            background: var(--card);
+            color: var(--text);
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--card);
+            color: var(--text);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: var(--bg);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: var(--card);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .fun-fact {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--bg);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 3rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-image {
+                flex: 0 0 200px;
+            }
+
+            
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--border);
+            z-index: 1001;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <header>
+        <nav class="container">
+            <div class="logo">Code-With-Rudy</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <button class="mobile-menu" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        <div class="mobile-nav" id="mobileNav">
+            <ul class="container">
+                <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
+                <li><a href="#skills" onclick="closeMobileMenu()">Skills</a></li>
+                <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
+                <li><a href="#certificates" onclick="closeMobileMenu()">Certificates</a></li>
+                <li><a href="#education" onclick="closeMobileMenu()">Education</a></li>
+                <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm Rudranil Goswami 👋</h1>
+                    <h3>aka Code-With-Rudy</h3>
+                    <div class="typing-animation" id="typingText"></div>
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Let's Connect</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-image">
+                        
+                        
+                        <img src="rudranil.jpg" alt="Rudranil Goswami" class="profile-pic">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">🧑‍💻 About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I'm a passionate Software Developer and Python Enthusiast with a unique blend of Electronics and Computer Engineering background. Currently pursuing B.Tech in ECE at GNIT and B.Sc in Data Science at IIT Madras.</p>
+                    <p>With a HackerRank Global Rank 1 in Python, I specialize in AI/ML, IoT, and Data Science. I believe that hardware is just software in disguise, which drives my passion for blending ECE knowledge with Python programming to build innovative solutions.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">🥇</div>
+                        <div>HackerRank Global Rank 1</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2</div>
+                        <div>Degrees in Progress</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">10+</div>
+                        <div>Technologies</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5+</div>
+                        <div>Major Projects</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">🔧 Tech Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-category">
+                    <h3><i class="fas fa-code"></i> Languages</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">C/C++</span>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">CSS</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3><i class="fas fa-tools"></i> Frameworks & Tools</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">Tkinter</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">Pygame</span>
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3><i class="fas fa-brain"></i> Domains</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Embedded Systems</span>
+                        <span class="tech-tag">Signal Processing</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">IoT</span>
+                        <span class="tech-tag">Data Science</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">🚀 Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-icon">🎵</div>
+                        <h3 class="project-title">AirStringPro</h3>
+                        <p class="project-description">A revolutionary hand-tracking MIDI instrument that lets you create music through gesture recognition using computer vision and machine learning.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Code-With-Rudy/AirStringPro" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://code-with-rudy.github.io/AirStringPro/" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-icon">🥁</div>
+                        <h3 class="project-title">Air Drum</h3>
+                        <p class="project-description">Virtual air drum system using computer vision to detect hand movements and translate them into drum sounds, creating an immersive musical experience.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Code-With-Rudy/air_drum" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://code-with-rudy.github.io/AirStringPro/" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-icon">📊</div>
+                        <h3 class="project-title">QuickFix</h3>
+                        <p class="project-description">A responsive image editing toolkit that provides quick and efficient image processing capabilities with an intuitive user interface.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Code-With-Rudy/QuickFix" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://code-with-rudy.github.io/QuickFix/" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-icon">🤖</div>
+                        <h3 class="project-title">Clone Stick Ai</h3>
+                        <p class="project-description">Motion Clone Technology
+Experience the future of motion tracking and real-time visual effects with Clone Stick AI. Create stunning visualizations of your movements with advanced AI-powered pose estimation.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Code-With-Rudy/Clone-Stick-Ai" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://code-with-rudy.github.io/Clone-Stick-Ai/" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-icon">🎨</div>
+                        <h3 class="project-title">Draw It Now</h3>
+                        <p class="project-description">Modern online paint tool to draw and save art made using HTML,CSS and Java Script."Click the Live Demo to see this in action"</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Code-With-Rudy/Drawit_now" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://code-with-rudy.github.io/Drawit_now/" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-icon">🧩</div>
+                        <h3 class="project-title">CartoonifyApp</h3>
+                        <p class="project-description">Image-to-cartoon transformer that uses advanced image processing techniques to convert regular photos into cartoon-style illustrations.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Code-With-Rudy/CartoonifyApp" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://github.com/Code-With-Rudy/CartoonifyApp" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">🏆 Certificates & Achievements</h2>
+            <div class="certificates-grid">
+                <div class="certificate-card" onclick="openModal('cert1')">
+                    <div class="certificate-image">
+                        
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3 class="certificate-title">Python Programming Certificate</h3>
+                        <p class="certificate-issuer">HackerRank</p>
+                        <p class="certificate-date">Global Rank #1</p>
+                    </div>
+                </div>
+                
+                <div class="certificate-card" onclick="openModal('cert2')">
+                    <div class="certificate-image">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3 class="certificate-title">Hack The Crisis In India-2024</h3>
+                        <p class="certificate-issuer">Ministry of IT Govt. of India</p>
+                        <p class="certificate-date">Top 300</p>
+                    </div>
+                </div>
+                <div class="certificate-card" onclick="openModal('cert3')">
+                    <div class="certificate-image">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3 class="certificate-title">Python & Django Frame Work Certificate</h3>
+                        <p class="certificate-issuer">Udemy</p>
+                        <p class="certificate-date">Sep,24</p>
+                    </div>
+                </div>
+                <div class="certificate-card" onclick="openModal('cert4')">
+                    <div class="certificate-image">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3 class="certificate-title">Problem Solving (Intermediate) Certificate</h3>
+                        <p class="certificate-issuer">HackerRank</p>
+                        <p class="certificate-date">Dec,24</p>
+                    </div>
+                </div>
+                <div class="certificate-card" onclick="openModal('cert5')">
+                    <div class="certificate-image">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3 class="certificate-title">C++ crash Course Certificate</h3>
+                        <p class="certificate-issuer">Udemy</p>
+                        <p class="certificate-date">Aug,23</p>
+                    </div>
+                </div>
+                <div class="certificate-card" onclick="openModal('cert6')">
+                    <div class="certificate-image">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="certificate-content">
+                        <h3 class="certificate-title">Ingenium Model War </h3>
+                        <p class="certificate-issuer">Dept. of ECS,GNIT</p>
+                        <p class="certificate-date">First Runner Up</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+                
+    <section id="education" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">🎓 Education & Experience</h2>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <h3>B.Tech in Electronics & Communication Engineering</h3>
+                    <p><strong>Guru Nanak Institute of Technology (GNIT) Sodepur , 2023-27</strong></p>
+                    <p>Focusing on embedded systems, signal processing, and the intersection of hardware and software development.</p>
+                </div>
+                <div class="education-item">
+                    <h3>B.Sc in Data Science</h3>
+                    <p><strong>Indian Institute of Technology (IIT) Madras</strong></p>
+                    <p>Specialized curriculum covering machine learning, statistical analysis, and data-driven decision making.</p>
+                </div>
+                <div class="education-item">
+                    <h3>Higher Secondary</h3>
+                    <p><strong>Aditya Academy Sr Secondary (AASS) Dumdum,Kolkata</strong></p>
+                    <p>Completed CBSE curriculum with a focus on Physics, Chemistry, Mathematics, Computer Science, English, and Physical Education in an English-medium environment.</p>
+                </div>
+                <div class="education-item">
+                    <h3>HackerRank Global Rank 1 in Python</h3>
+                    <p><strong>Achievement Recognition</strong></p>
+                    <p>Achieved the highest global ranking in Python programming challenges, demonstrating exceptional problem-solving skills.</p>
+                </div>
+            </div>
+            
+            <div class="fun-fact">
+                <h3>🧠 Fun Fact</h3>
+                <p>"I believe hardware is just software in disguise—that's why I blend ECE & Python to build cool things."</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">🌐 Let's Connect</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+            
+            <div class="social-links">
+                <a href="https://codewithrudy.blogspot.com" class="social-link" target="_blank" title="Blog">
+                    <i class="fas fa-blog"></i>
+                </a>
+                <a href="https://www.instagram.com/rudranil.exe" class="social-link" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.hackerrank.com/profile/RudranilGoswami3" class="social-link" target="_blank" title="HackerRank">
+                    <i class="fab fa-hackerrank"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/rudranil-goswami-a94298329/" class="social-link" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Code-With-Rudy" class="social-link" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Rudranil Goswami. Thanks for stopping by! ⭐ Consider starring a repo if you find something useful!</p>
+        </div>
+    </footer>
+
+    <script>
+        const typingTexts = [
+            "Pythonista | Electronics Enthusiast",
+            "Software Developer | IoT Lover", 
+            "AIML | Data Science Explorer"
+        ];
+        
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function typeText() {
+            const currentText = typingTexts[textIndex];
+            const typingElement = document.getElementById('typingText');
+            
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typeSpeed = isDeleting ? 50 : 100;
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % typingTexts.length;
+                typeSpeed = 500;
+            }
+            
+            setTimeout(typeText, typeSpeed);
+        }
+        
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-moon';
+            }
+        }
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            form.reset();
+        }
+        
+        function updateScrollProgress() {
+            const scrolled = window.pageYOffset;
+            const maxHeight = document.body.scrollHeight - window.innerHeight;
+            const progress = (scrolled / maxHeight) * 100;
+            document.getElementById('scrollProgress').style.width = progress + '%';
+        }
+        
+        function observeElements() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            typeText();
+            observeElements();
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+        
+        window.addEventListener('scroll', updateScrollProgress);
+    </script>
+</body>
+</html>
+                
+
